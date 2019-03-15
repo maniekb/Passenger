@@ -1,0 +1,16 @@
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.deps.json
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.dll
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.pdb
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Api.dll
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Core.dll
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Infrastructure.dll
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Api.pdb
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Infrastructure.pdb
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\bin\Debug\netcoreapp2.1\Passenger.Core.pdb
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.csprojAssemblyReference.cache
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.csproj.CoreCompileInputs.cache
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.AssemblyInfoInputs.cache
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.AssemblyInfo.cs
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.csproj.CopyComplete
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.dll
+C:\Users\Maciek\Desktop\PassengerDev\Passenger.Tests.EndToEnd\obj\Debug\netcoreapp2.1\Passenger.Tests.EndToEnd.pdb

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Passenger.Tests.EndToEnd</AssemblyName>
+    <PackageId>Passenger.Tests.EndToEnd</PackageId>
+  </PropertyGroup>
+
+   <ItemGroup>
+    <ProjectReference Include="../Passenger.Api/Passenger.Api.csproj" />
+    <ProjectReference Include="../Passenger.Infrastructure/Passenger.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
+

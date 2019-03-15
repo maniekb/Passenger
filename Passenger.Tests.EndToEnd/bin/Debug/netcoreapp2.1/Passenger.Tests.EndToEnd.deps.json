@@ -1,0 +1,63 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "Passenger.Tests.EndToEnd/1.0.0": {
+        "dependencies": {
+          "Passenger.Api": "1.0.0",
+          "Passenger.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "Passenger.Tests.EndToEnd.dll": {}
+        }
+      },
+      "Passenger.Api/1.0.0": {
+        "dependencies": {
+          "Passenger.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "Passenger.Api.dll": {}
+        }
+      },
+      "Passenger.Core/1.0.0": {
+        "runtime": {
+          "Passenger.Core.dll": {}
+        }
+      },
+      "Passenger.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Passenger.Core": "1.0.0"
+        },
+        "runtime": {
+          "Passenger.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Passenger.Tests.EndToEnd/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Passenger.Api/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Passenger.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Passenger.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
