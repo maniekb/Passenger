@@ -1,9 +1,0 @@
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\bin\Debug\netstandard2.0\Passenger.Core.deps.json
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\bin\Debug\netstandard2.0\Passenger.Core.dll
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\bin\Debug\netstandard2.0\Passenger.Core.pdb
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\obj\Debug\netstandard2.0\Passenger.Core.csprojAssemblyReference.cache
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\obj\Debug\netstandard2.0\Passenger.Core.csproj.CoreCompileInputs.cache
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\obj\Debug\netstandard2.0\Passenger.Core.AssemblyInfoInputs.cache
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\obj\Debug\netstandard2.0\Passenger.Core.AssemblyInfo.cs
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\obj\Debug\netstandard2.0\Passenger.Core.dll
-C:\Users\Maciek\Desktop\PassengerDev\Passenger.Core\obj\Debug\netstandard2.0\Passenger.Core.pdb
