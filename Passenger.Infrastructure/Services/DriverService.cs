@@ -1,4 +1,7 @@
 using System;
+using System.Threading.Tasks;
+using AutoMapper;
+using Passenger.Core.Domain;
 using Passenger.Infrastructure.DTO;
 using Passenger.Infrastructure.Repositories;
 
@@ -7,17 +10,20 @@ namespace Passenger.Infrastructure.Services
     public class DriverService : IDriverService
     {
         private readonly InMemoryDriverRepository _driverRepository;
+        private readonly IMapper _mapper;
 
-        DriverService(InMemoryDriverRepository driverRepository)
+        DriverService(InMemoryDriverRepository driverRepository, IMapper mapper)
         {
             _driverRepository = driverRepository;
+
+            _mapper = mapper;
         }
 
-        public DriverDto Get(Guid userId)
+        public async Task<DriverDto> GetAsync(Guid userId)
         {
-            var driver = _driverRepository.Get(userId);
+            var driver = await _driverRepository.GetAsync(userId);
 
-            return new DriverDto(driver.UserId, driver.Vehicle, driver.Routes, driver.DailyRoutes);
+            return _mapper.Map<Driver, DriverDto>(driver);
         }
     }
 }
