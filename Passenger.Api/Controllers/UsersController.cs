@@ -7,14 +7,14 @@ using Passenger.Infrastructure.Commands.Users;
 using Passenger.Infrastructure.DTO;
 using Passenger.Infrastructure.Services;
 using Newtonsoft.Json;
+using Passenger.Infrastructure.Commands;
 
 namespace Passenger.Api.Controllers
 {
-    [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : ApiControllerBase
     {
         private readonly IUserService _userService;
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ICommandDispatcher commandDispatcher) : base(commandDispatcher)
         {
             _userService = userService;
         }
@@ -34,13 +34,11 @@ namespace Passenger.Api.Controllers
            
 
         [HttpPost("")]
-        public async Task<IActionResult> Post([FromBody] CreateUser request)
+        public async Task<IActionResult> Post([FromBody] CreateUser command)
         {
-            await _userService.RegisterAsync(request.Email, request.Username, request.Password);
-
-            return Created($"users/{request.Email}", new Object());
+            await CommandDispatcher.DispatchAsync(command);
+        
+            return Created($"users/{command.Email}", new Object());
         }
-           
-
     }
 }
