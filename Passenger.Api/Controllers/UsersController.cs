@@ -8,13 +8,15 @@ using Passenger.Infrastructure.DTO;
 using Passenger.Infrastructure.Services;
 using Newtonsoft.Json;
 using Passenger.Infrastructure.Commands;
+using Passenger.Infrastructure.Settings;
 
 namespace Passenger.Api.Controllers
 {
     public class UsersController : ApiControllerBase
     {
         private readonly IUserService _userService;
-        public UsersController(IUserService userService, ICommandDispatcher commandDispatcher) : base(commandDispatcher)
+        public UsersController(IUserService userService, 
+                               ICommandDispatcher commandDispatcher) : base(commandDispatcher)
         {
             _userService = userService;
         }
