@@ -1,44 +1,46 @@
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using FluentAssertions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using Passenger.Api;
-using Passenger.Infrastructure.Commands.Users;
 using Passenger.Infrastructure.DTO;
 using Xunit;
-using Microsoft.AspNetCore.Hosting.Server;
-
 
 namespace Passenger.Tests.EndToEnd.Controllers
 {
-    public class UserControllerTests
+   public class UserControllerTests : IClassFixture<WebApplicationFactory<Startup>>
     {
-        private readonly TestServer _server;
-        private readonly HttpClient _client;
-        public UserControllerTests()
+        private readonly WebApplicationFactory<Startup> _factory;
+
+        public UserControllerTests(WebApplicationFactory<Startup> factory)
         {
-            _server = new TestServer(new WebHostBuilder()
-            .UseStartup<Startup>());
-            _client = _server.CreateClient();
+            _factory = factory;
         }
 
+        [Theory]
+        [InlineData("user1@mail.com")]
+        [InlineData("user2@mail.com")]
+        [InlineData("user3@mail.com")]
+        public async Task given_valid_email_should_exist(string email)
+        {
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync($"users/{email}");
+            response.EnsureSuccessStatusCode();
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            var user = JsonConvert.DeserializeObject<UserDto>(responseString);
+
+            Assert.True(user.Email == email);
+        }
 
         [Fact]
-        public async Task given_valid_email_user_should_exist()
+        public async Task given_invalid_email_should_not_exist()
         {
-        //     var email = "user1@gmail.com";
-        //     var response = await _client.GetAsync($"users/{email}");
-        //     response.EnsureSuccessStatusCode();
+            var email = "wrongmail@mail.com";
+            var client = _factory.CreateClient();
 
-        //     var responseString = await response.Content.ReadAsStringAsync();
-        //     var user = JsonConvert.DeserializeObject<UserDto>(responseString);
-
-        //     user.Email.Should().BeEquivalentTo(email);
-
+            var response = await client.GetAsync($"users/{email}");
+            Assert.True(response.StatusCode == System.Net.HttpStatusCode.NotFound);
         }
     }
 }
