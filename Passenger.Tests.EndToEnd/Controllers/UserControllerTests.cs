@@ -1,9 +1,11 @@
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using Passenger.Api;
 using Passenger.Infrastructure.DTO;
 using Xunit;
+using FluentAssertions;
 
 namespace Passenger.Tests.EndToEnd.Controllers
 {
@@ -30,7 +32,7 @@ namespace Passenger.Tests.EndToEnd.Controllers
             var responseString = await response.Content.ReadAsStringAsync();
             var user = JsonConvert.DeserializeObject<UserDto>(responseString);
 
-            Assert.True(user.Email == email);
+            user.Email.ShouldBeEquivalentTo(email);
         }
 
         [Fact]
@@ -40,7 +42,9 @@ namespace Passenger.Tests.EndToEnd.Controllers
             var client = _factory.CreateClient();
 
             var response = await client.GetAsync($"users/{email}");
-            Assert.True(response.StatusCode == System.Net.HttpStatusCode.NotFound);
+
+            response.StatusCode.ShouldBeEquivalentTo(HttpStatusCode.NotFound);
+            
         }
     }
 }
