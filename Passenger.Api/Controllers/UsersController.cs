@@ -34,7 +34,6 @@ namespace Passenger.Api.Controllers
             
         }
            
-
         [HttpPost("")]
         public async Task<IActionResult> Post([FromBody] CreateUser command)
         {
