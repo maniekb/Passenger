@@ -9,6 +9,7 @@ using Passenger.Infrastructure.Services;
 using Newtonsoft.Json;
 using Passenger.Infrastructure.Commands;
 using Passenger.Infrastructure.Settings;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Passenger.Api.Controllers
 {
@@ -21,6 +22,7 @@ namespace Passenger.Api.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         [HttpGet("{email}")]
         public async Task<IActionResult> Get(string email)
         {
