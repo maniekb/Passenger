@@ -15,10 +15,11 @@ namespace Passenger.Tests.Services
         public async Task Test()
         {
            var userRepositoryMock = new Mock<IUserRepository>();
+           var encrypter = new Encrypter();
            var mapperMock = new Mock<IMapper>();
-
-           var userService = new UserService(userRepositoryMock.Object, mapperMock.Object);
-           await userService.RegisterAsync("user@mail.com", "user", "password");
+           
+           var userService = new UserService(userRepositoryMock.Object, encrypter, mapperMock.Object);
+           await userService.RegisterAsync("user@mail.com", "username", "password", "user");
 
            userRepositoryMock.Verify(x => x.AddAsync(It.IsAny<User>()), Times.Once);
         }
