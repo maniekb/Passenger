@@ -22,7 +22,6 @@ namespace Passenger.Api.Controllers
             _userService = userService;
         }
 
-        [Authorize]
         [HttpGet("{email}")]
         public async Task<IActionResult> Get(string email)
         {
@@ -37,7 +36,7 @@ namespace Passenger.Api.Controllers
         }
            
         [HttpPost("")]
-        public async Task<IActionResult> Post([FromBody] CreateUser command)
+        public async Task<IActionResult> Post([FromBody]CreateUser command)
         {
             await CommandDispatcher.DispatchAsync(command);
         
