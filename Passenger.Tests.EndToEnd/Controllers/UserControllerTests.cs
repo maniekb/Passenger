@@ -15,13 +15,12 @@ namespace Passenger.Tests.EndToEnd.Controllers
         {
         }
 
-        [Theory]
-        [InlineData("user1@mail.com")]
-        [InlineData("user2@mail.com")]
-        [InlineData("user3@mail.com")]
-        public async Task given_valid_email_should_exist(string email)
+        [Fact]
+        public async Task given_valid_email_should_exist()
         {
             var client = Factory.CreateClient();
+
+            var email = "user2@test.com";
 
             var response = await client.GetAsync($"users/{email}");
             response.EnsureSuccessStatusCode();

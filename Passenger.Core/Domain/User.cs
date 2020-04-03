@@ -21,9 +21,9 @@ namespace Passenger.Core.Domain
 
         }
 
-        public User(string email, string username, string password, string role, string salt)
+        public User(Guid userId, string email, string username, string password, string role, string salt)
         {
-            Id = Guid.NewGuid();
+            Id = userId;
             SetEmail(email);
             SetPassword(password);
             SetUsername(username);

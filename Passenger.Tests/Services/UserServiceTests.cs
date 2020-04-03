@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Moq;
@@ -12,14 +13,14 @@ namespace Passenger.Tests.Services
     public class UserServiceTests
     {
         [Fact]
-        public async Task Test()
+        public async Task register_async_should_invoke_add_on_repository()
         {
            var userRepositoryMock = new Mock<IUserRepository>();
            var encrypter = new Encrypter();
            var mapperMock = new Mock<IMapper>();
            
            var userService = new UserService(userRepositoryMock.Object, encrypter, mapperMock.Object);
-           await userService.RegisterAsync("user@mail.com", "username", "password", "user");
+           await userService.RegisterAsync(Guid.NewGuid(), "user@mail.com", "username", "password", "user");
 
            userRepositoryMock.Verify(x => x.AddAsync(It.IsAny<User>()), Times.Once);
         }

@@ -24,5 +24,14 @@ namespace Passenger.Api.Controllers
         
             return NoContent();
         }
+
+        [HttpGet]
+        [Route("jwt")]
+        public async Task<IActionResult> Get()
+        {
+            var jwt = _jwtHandler.CreateToken("tammasmdka@gmail.com", "user");
+
+            return Json(jwt);
+        }
     }
 }

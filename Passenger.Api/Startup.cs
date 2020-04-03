@@ -46,8 +46,8 @@ namespace Passenger.Api
             builder.RegisterModule( new SettingsModule(Configuration));
             ApplicationContainer = builder.Build();
 
-
             var sp = services.BuildServiceProvider();
+
             var jwtSettings = sp.GetService<JwtSettings>();
             services.AddAuthentication()
                 .AddJwtBearer(cfg =>
@@ -82,6 +82,13 @@ namespace Passenger.Api
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();
+
+            var generalSettings = app.ApplicationServices.GetService<GeneralSettings>();
+            if(generalSettings.SeedData)
+            {
+                var dataInitializer = app.ApplicationServices.GetService<IDataInitializer>();
+                dataInitializer.SeedAsync();
+            }
         }
     }
 }

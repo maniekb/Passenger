@@ -25,10 +25,6 @@ namespace Passenger.Infrastructure.Repositories
 
         public async Task<IEnumerable<Driver>> GetAllAsync() 
             => await Task.FromResult(_drivers);
-            
-        public async Task UpdateAsync(Driver driver)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
