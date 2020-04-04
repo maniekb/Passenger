@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Passenger.Core.Domain;
@@ -24,6 +25,14 @@ namespace Passenger.Infrastructure.Services
             _encrypter = encrypter;
             _mapper = mapper;
         }
+
+        public async Task<IEnumerable<UserDto>> BrowseAsync()
+        {
+            var users = await _userRepository.BrowseAsync();
+
+            return _mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(users);
+        }
+
         public async Task<UserDto> GetAsync(string email)
         {
             var user = await _userRepository.GetAsync(email);

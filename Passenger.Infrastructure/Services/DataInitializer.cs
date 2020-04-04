@@ -9,10 +9,12 @@ namespace Passenger.Infrastructure.Services
     {
         private readonly IUserService _userService;
         private readonly ILogger<DataInitializer> _logger;
+        private readonly IDriverService _driverService;
 
-        public DataInitializer(IUserService userService, ILogger<DataInitializer> logger)
+        public DataInitializer(IUserService userService, IDriverService driverService, ILogger<DataInitializer> logger)
         {
             _userService = userService;
+            _driverService = driverService;
             _logger = logger;
         }
 
@@ -23,8 +25,10 @@ namespace Passenger.Infrastructure.Services
             for(var i = 1; i <= 10; i++)
             {
                 var userId = Guid.NewGuid();
-                var username = $"user{i}";
+                var username = $"user{i}"; 
                 tasks.Add(_userService.RegisterAsync(userId, $"{username}@test.com", username, "secret", "user"));
+                tasks.Add(_driverService.CreateAsync(userId));
+                tasks.Add(_driverService.SetVehicle(userId, "Masserati", "Quattroporte", 5));
             }
 
             for(var i = 1; i <= 3; i++)
