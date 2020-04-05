@@ -15,8 +15,7 @@ namespace Passenger.Infrastructure.Services
         private readonly IMapper _mapper;
 
         public UserService()
-        {
-            
+        {     
         }
 
         public UserService(IUserRepository userRepository, IEncrypter encrypter, IMapper mapper)

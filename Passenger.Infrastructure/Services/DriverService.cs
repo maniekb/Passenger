@@ -11,7 +11,7 @@ namespace Passenger.Infrastructure.Services
 {
     public class DriverService : IDriverService
     {
-        private readonly InMemoryDriverRepository _driverRepository;
+        private readonly IDriverRepository _driverRepository;
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
@@ -19,7 +19,7 @@ namespace Passenger.Infrastructure.Services
         {
         }
 
-        public DriverService(InMemoryDriverRepository driverRepository, IUserRepository userRepository, IMapper mapper)
+        public DriverService(IDriverRepository driverRepository, IUserRepository userRepository, IMapper mapper)
         {
             _driverRepository = driverRepository;
             _userRepository = userRepository;

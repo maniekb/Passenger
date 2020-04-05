@@ -11,12 +11,10 @@ namespace Passenger.Infrastructure.Repositories
     {
         private static ISet<User> _users = new HashSet<User>();
         public async Task AddAsync(User user)
-        {
-           await Task.FromResult(_users.Add(user));
-        }
+           => await Task.FromResult(_users.Add(user));
 
         public async Task<User> GetAsync(Guid id) 
-            => await Task.FromResult( _users.Single( x => x.Id == id )) ;
+            => await Task.FromResult( _users.Single( x => x.Id == id ));
      
         public async Task<User> GetAsync(string email) 
             => await Task.FromResult( _users.SingleOrDefault( x => x.Email == email.ToLowerInvariant()));

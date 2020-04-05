@@ -8,8 +8,8 @@ namespace Passenger.Infrastructure.Services
     public class DataInitializer : IDataInitializer
     {
         private readonly IUserService _userService;
-        private readonly ILogger<DataInitializer> _logger;
         private readonly IDriverService _driverService;
+        private readonly ILogger<DataInitializer> _logger;
 
         public DataInitializer(IUserService userService, IDriverService driverService, ILogger<DataInitializer> logger)
         {
