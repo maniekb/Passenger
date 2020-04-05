@@ -28,7 +28,7 @@ namespace Passenger.Infrastructure.Services
                 var username = $"user{i}"; 
                 tasks.Add(_userService.RegisterAsync(userId, $"{username}@test.com", username, "secret", "user"));
                 tasks.Add(_driverService.CreateAsync(userId));
-                tasks.Add(_driverService.SetVehicle(userId, "Masserati", "Quattroporte", 5));
+                tasks.Add(_driverService.SetVehicle(userId, "Masserati", "Quattroporte"));
             }
 
             for(var i = 1; i <= 3; i++)
