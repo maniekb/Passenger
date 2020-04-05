@@ -10,6 +10,7 @@ namespace Passenger.Infrastructure.Repositories
     public class InMemoryUserRepository : IUserRepository
     {
         private static ISet<User> _users = new HashSet<User>();
+
         public async Task AddAsync(User user)
            => await Task.FromResult(_users.Add(user));
 
@@ -30,8 +31,6 @@ namespace Passenger.Infrastructure.Repositories
         }
 
         public async Task UpdateAsync(User user)
-        {
-            await Task.CompletedTask;
-        }
+            => await Task.CompletedTask;
     }
 }

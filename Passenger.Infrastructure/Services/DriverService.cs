@@ -49,7 +49,6 @@ namespace Passenger.Infrastructure.Services
 
             driver = new Driver(user);
             await _driverRepository.AddAsync(driver);
-
         }
 
         public async Task<DriverDto> GetAsync(Guid userId)
