@@ -7,7 +7,7 @@ namespace Passenger.Infrastructure.Services
 {
     public interface IVehicleProvider : IService
     {
-        Task<IEnumerable<VehicleDTO>> BrowseAsync();
-        Task<VehicleDTO> GetAsync(string brand, string name);
+        Task<IEnumerable<VehicleDto>> BrowseAsync();
+        Task<VehicleDto> GetAsync(string brand, string name);
     }
 }
