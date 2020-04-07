@@ -10,6 +10,6 @@ namespace Passenger.Infrastructure.Services
         Task<DriverDetailsDto> GetAsync(Guid userId);
         Task CreateAsync(Guid userId);
         Task SetVehicle(Guid userId, string brand, string name);
-        Task<IEnumerable<DriverDetailsDto>> BrowseAsync();
+        Task<IEnumerable<DriverDto>> BrowseAsync();
     }
 }

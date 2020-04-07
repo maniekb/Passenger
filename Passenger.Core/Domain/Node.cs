@@ -51,7 +51,7 @@ namespace Passenger.Core.Domain
             }
         }
 
-         public void SetLatitude(double latitude)
+        public void SetLatitude(double latitude)
         {
             if(latitude > 90 || latitude < -90)
             {
@@ -66,5 +66,8 @@ namespace Passenger.Core.Domain
                 Latitude = latitude;
             }
         }
+
+        public static Node Create(string adress, double longitude, double latitude)
+            => new Node(adress, longitude, latitude);
     }
 }

@@ -20,5 +20,8 @@ namespace Passenger.Infrastructure.Repositories
         public async Task<IEnumerable<Driver>> BrowseAsync() 
             => await Task.FromResult(_drivers);
 
+        public async Task UpdateAsync(Driver driver)
+            => await Task.CompletedTask;
+
     }
 }
