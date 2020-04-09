@@ -31,8 +31,7 @@ namespace Passenger.Api.Controllers
                 return NotFound();
             }
             
-            return Ok(user);
-            
+            return Ok(user);     
         }
 
         [HttpGet]
@@ -46,7 +45,7 @@ namespace Passenger.Api.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Post([FromBody]CreateUser command)
         {
-            await CommandDispatcher.DispatchAsync(command);
+            await DispatchAsync(command);
         
             return Created($"users/{command.Email}", new Object());
         }

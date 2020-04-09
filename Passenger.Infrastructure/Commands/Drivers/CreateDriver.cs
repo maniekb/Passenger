@@ -2,16 +2,14 @@ using System;
 
 namespace Passenger.Infrastructure.Commands.Drivers
 {
-    public class CreateDriver : ICommand
+    public class CreateDriver : AuthenticatedCommandBase
     {
         public Guid UserId { get; set; }
-
         public DriverVehicle Vehicle { get; set; }
-
         public class DriverVehicle
         {
-        public string Brand { get; set;}
-        public string Name { get; set; }
+            public string Brand { get; set;}
+            public string Name { get; set; }
         }
     }
 }

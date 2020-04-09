@@ -6,13 +6,18 @@ using Passenger.Api;
 using Passenger.Infrastructure.DTO;
 using Xunit;
 using FluentAssertions;
+using System;
+using Xunit.Abstractions;
 
 namespace Passenger.Tests.EndToEnd.Controllers
 {
    public class UserControllerTests : ControllerTestsBase
     {
-        public UserControllerTests(WebApplicationFactory<Startup> factory) : base(factory)
+        private readonly ITestOutputHelper _testOutputHelper;
+        
+        public UserControllerTests(WebApplicationFactory<Startup> factory, ITestOutputHelper testOutputHelper) : base(factory)
         {
+            _testOutputHelper = testOutputHelper;
         }
 
         [Fact]
@@ -20,9 +25,10 @@ namespace Passenger.Tests.EndToEnd.Controllers
         {
             var client = Factory.CreateClient();
 
-            var email = "user2@test.com";
+            var email = "user1@test.com";
 
             var response = await client.GetAsync($"users/{email}");
+            _testOutputHelper.WriteLine(response.ToString());
             response.EnsureSuccessStatusCode();
 
             var responseString = await response.Content.ReadAsStringAsync();

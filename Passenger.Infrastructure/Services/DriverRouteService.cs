@@ -30,7 +30,7 @@ namespace Passenger.Infrastructure.Services
             driver.AddRoute(name, start, end);
         }
 
-        public async Task GetAsync(Guid userId, string name)
+        public async Task DeleteAsync(Guid userId, string name)
         {
             var driver = await _driverRepository.GetAsync(userId);
             if(driver == null)

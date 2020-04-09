@@ -20,16 +20,17 @@ namespace Passenger.Api.Controllers
         [Route("password")]
         public async Task<IActionResult> Put([FromBody] ChangeUserPassword command)
         {
-            await CommandDispatcher.DispatchAsync(command);
+            await DispatchAsync(command);
         
             return NoContent();
         }
 
+        // only testing purpose
         [HttpGet]
         [Route("jwt")]
         public async Task<IActionResult> Get()
         {
-            var jwt = _jwtHandler.CreateToken("tammasmdka@gmail.com", "user");
+            var jwt = _jwtHandler.CreateToken(new System.Guid(), "tammasmdka@gmail.com", "user");
 
             return Json(jwt);
         }
