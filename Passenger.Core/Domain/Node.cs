@@ -4,7 +4,7 @@ namespace Passenger.Core.Domain
 {
     public class Node
     {
-        public string Adress { get; protected set; }
+        public string Address { get; protected set; }
         public double Longitude { get; protected set; }
         public double Latitude { get; protected set; }
 
@@ -12,26 +12,22 @@ namespace Passenger.Core.Domain
         {
         }
 
-        protected Node(string adress, double longitude, double latitude)
+        protected Node(string address, double longitude, double latitude)
         {
-            SetAdress(adress);
+            SetAdress(address);
             SetLongitude(longitude);
             SetLatitude(latitude);
         }
 
-        public void SetAdress(string adress)
+        public void SetAdress(string address)
         {
-            if(string.IsNullOrWhiteSpace(adress))
+            if(string.IsNullOrWhiteSpace(address))
             {
                 throw new Exception("Adress is invalid.");
             }
-            else if (Adress.Equals(adress))
-            {
-                 return;
-            }
             else
             {
-                Adress = adress;
+                Address = address;
             }
         }
 

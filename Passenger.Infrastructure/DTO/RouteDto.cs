@@ -5,8 +5,8 @@ namespace Passenger.Infrastructure.DTO
 {
     public class RouteDto
     {
-        public ISet<NodeDto> _passengerNodes = new HashSet<NodeDto>();
-        public Guid Id { get; set; }
-        public IEnumerable<NodeDto> PassengerNodes { get; set; }
+        public string Name { get; set; }
+        public NodeDto SartNode { get; set; }
+        public NodeDto EndNode { get; set; }
     }
 }
