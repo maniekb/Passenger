@@ -26,8 +26,8 @@ namespace Passenger.Tests.EndToEnd.Controllers
             var client = Factory.CreateClient();
 
             var email = "user1@test.com";
-
-            var response = await client.GetAsync($"users/{email}");
+            // smth weird
+            var response = await client.GetAsync($"users/user1@test.com");
             _testOutputHelper.WriteLine(response.ToString());
             response.EnsureSuccessStatusCode();
 

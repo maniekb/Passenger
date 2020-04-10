@@ -9,11 +9,13 @@ namespace Passenger.Infrastructure.Services
     public class DriverRouteService : IDriverRouteService
     {
         private readonly IDriverRepository _driverRepository;
+        private readonly IRouteManager _routeManager;
         private readonly IMapper _mapper;
 
-        public DriverRouteService(IDriverRepository driverRepository, IMapper mapper)
+        public DriverRouteService(IDriverRepository driverRepository, IRouteManager routeManager, IMapper mapper)
         {
             _driverRepository = driverRepository;
+            _routeManager = routeManager;
             _mapper = mapper;
         }
 
@@ -24,10 +26,11 @@ namespace Passenger.Infrastructure.Services
             {
                 throw new Exception($"Driver with id: {userId} was not found.");
             }
-
-            var start = Node.Create("Start Address", startLongitude, startLatitude);
-            var end = Node.Create("End Address", endLongitude, endLatitude);
-            driver.AddRoute(name, start, end);
+            var startAddress = await _routeManager.GetAddressAsync(startLatitude, startLongitude);
+            var endAddress = await _routeManager.GetAddressAsync(endLatitude, endLongitude);
+            var startNode = Node.Create(startAddress, startLongitude, startLatitude);
+            var endNode = Node.Create(endAddress, endLongitude, endLatitude);
+            driver.AddRoute(name, startNode, endNode);
         }
 
         public async Task DeleteAsync(Guid userId, string name)
