@@ -44,7 +44,7 @@ namespace Passenger.Infrastructure.Services
             var user = await _userRepository.GetAsync(email);
             if(user == null)
             {
-                throw new Exception("Invalid credentials!");
+                throw new Exception("Invalid credentials");
             }
 
             var hash = _encrypter.GetHash(password, user.Salt);
@@ -54,7 +54,7 @@ namespace Passenger.Infrastructure.Services
                 return;
             }
 
-            throw new Exception("Invalid credentials!");
+            throw new Exception("Invalid credentials");
         }
 
         public async Task RegisterAsync(Guid userId, string email, string username, string password, string role)
