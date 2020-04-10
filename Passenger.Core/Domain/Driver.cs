@@ -41,14 +41,14 @@ namespace Passenger.Core.Domain
 
         }
 
-        public void AddRoute(string name, Node start, Node end)
+        public void AddRoute(string name, Node start, Node end, int distance)
         {
             var route = Routes.SingleOrDefault(x => x.Name == name);
             if(route != null)
             {
                 throw new Exception($"Route with name: {name} arleady exists for driver: {Name}");
             }
-            _routes.Add(Route.Create(name, start, end));
+            _routes.Add(Route.Create(name, start, end, distance));
             UpdatedAt = DateTime.UtcNow;
         }
 

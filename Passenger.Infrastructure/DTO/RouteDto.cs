@@ -8,5 +8,6 @@ namespace Passenger.Infrastructure.DTO
         public string Name { get; set; }
         public NodeDto SartNode { get; set; }
         public NodeDto EndNode { get; set; }
+        public int Distance { get; set; }
     }
 }
