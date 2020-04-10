@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Passenger.Infrastructure.Commands;
 using Passenger.Infrastructure.Commands.Drivers;
@@ -15,6 +16,7 @@ namespace Passenger.Api.Controllers
             _driverService = driverService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateDriver command)
         {
@@ -42,6 +44,24 @@ namespace Passenger.Api.Controllers
             }
 
             return Json(driver);
+        }
+
+        [Authorize]
+        [HttpDelete("me")]
+        public async Task<IActionResult> Delete()
+        {
+            await DispatchAsync(new DeleteDriver());
+
+            return NoContent();
+        }
+
+        [Authorize]
+        [HttpPut("me")]
+        public async Task<IActionResult> Put([FromBody]UpdateDriver command)
+        {
+            await DispatchAsync(command);
+
+            return NoContent();
         }
     }
 }
