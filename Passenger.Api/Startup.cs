@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using Passenger.Api.Framework;
 using Passenger.Core.Repositories;
 using Passenger.Infrastructure.IoC;
 using Passenger.Infrastructure.IoC.Modules;
@@ -86,6 +87,7 @@ namespace Passenger.Api
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
+            app.UseMiddleware(typeof(ExceptionHandlerMiddleware));
             app.UseMvc();
 
             var generalSettings = app.ApplicationServices.GetService<GeneralSettings>();
