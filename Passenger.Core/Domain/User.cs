@@ -27,20 +27,33 @@ namespace Passenger.Core.Domain
             SetEmail(email);
             SetPassword(password);
             SetUsername(username);
-            Role = role;
+            SetRole(role);
             Salt = salt;
             CreatedAt = UpdatedAt = DateTime.UtcNow;
         }
-        
+
+        private void SetRole(string role)
+        {
+            if(Role == role)
+                return;
+
+            if(!(role.Equals("user") || role.Equals("admin")))
+            {
+                throw new DomainException(ErroCodes.InvalidRole, "Role must be 'user' or 'admin'");
+            }
+
+            Role = role;
+        }
+
         private void SetUsername(string username)
         {
             if(!NameRegex.IsMatch(username))
             {
-                throw new Exception("Username is invalid.");
+                throw new DomainException(ErroCodes.InvalidUsername, "Username is invalid.");
             }
             if(string.IsNullOrWhiteSpace(username))
             {
-                throw new Exception("Username is invalid.");
+                throw new DomainException(ErroCodes.InvalidUsername, "Username can not be empty.");
             }
             if(username == Username)
             {
@@ -54,7 +67,7 @@ namespace Passenger.Core.Domain
         {
             if(string.IsNullOrWhiteSpace(email))
             {
-                throw new Exception("Email is invalid.");
+                throw new DomainException(ErroCodes.InvalidEmail, "Email is invalid.");
             }
             if(Email == email)
             {
@@ -68,11 +81,11 @@ namespace Passenger.Core.Domain
         {
             if(string.IsNullOrWhiteSpace(password))
             {
-                throw new Exception("Password cannot be empty.");
+                throw new DomainException(ErroCodes.InvalidPassword, "Password cannot be empty.");
             }
             if(password.Length < 4 || password.Length > 100)
             {
-                throw new Exception("Password must be 4-100 characters long.");
+                throw new DomainException(ErroCodes.InvalidPassword, "Password must be 4-100 characters long.");
             }
             if(Password == password)
             {

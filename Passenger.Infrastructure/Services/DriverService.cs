@@ -5,6 +5,7 @@ using AutoMapper;
 using Passenger.Core.Domain;
 using Passenger.Core.Repositories;
 using Passenger.Infrastructure.DTO;
+using Passenger.Infrastructure.Exceptions;
 using Passenger.Infrastructure.Extensions;
 using Passenger.Infrastructure.Repositories;
 
@@ -42,7 +43,7 @@ namespace Passenger.Infrastructure.Services
             var driver = await _driverRepository.GetOrFailAsync(userId);
             if(driver != null)
             {
-                throw new Exception($"Driver with id: {userId} arleady exists.");
+                throw new ServiceException(Infrastructure.Exceptions.ErroCodes.DriverArleadyExists, $"Driver with id: {userId} arleady exists.");
             }
 
             driver = new Driver(user);
