@@ -8,15 +8,21 @@ namespace Passenger.Infrastructure.Handlers.Drivers
     public class UpdateDriverHandler : ICommandHandler<UpdateDriver>
     {
         private readonly IDriverService _driverService;
-        public UpdateDriverHandler(IDriverService driverService)
+        private readonly IHandler _handler;
+        public UpdateDriverHandler(IHandler handler, IDriverService driverService)
         {
              _driverService = driverService;
+             _handler = handler;
         }
 
         public async Task HandleAsync(UpdateDriver command)
-        {
-            var vehicle = command.Vehicle;
-            await _driverService.SetVehicle(command.UserId, vehicle.Brand, vehicle.Name);
-        }
+            => await _handler
+            .Run(async () => 
+            {
+                var vehicle = command.Vehicle;
+                await _driverService.SetVehicle(command.UserId, vehicle.Brand, vehicle.Name);
+            })
+            .ExecuteAsync();
+
     }
 }

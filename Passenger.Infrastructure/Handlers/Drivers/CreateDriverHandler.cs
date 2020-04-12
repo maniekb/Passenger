@@ -8,16 +8,23 @@ namespace Passenger.Infrastructure.Handlers.Drivers
     public class CreateDriverHandler : ICommandHandler<CreateDriver>
     {
         private readonly IDriverService _driverService;
-        public CreateDriverHandler(IDriverService driverService)
+
+        private readonly IHandler _handler;
+        public CreateDriverHandler(IHandler handler, IDriverService driverService)
         {
              _driverService = driverService;
+             _handler = handler;
         }
 
         public async Task HandleAsync(CreateDriver command)
-        {
-            await _driverService.CreateAsync(command.UserId);
-            var vehicle = command.Vehicle;
-            await _driverService.SetVehicle(command.UserId, vehicle.Brand, vehicle.Name);
-        }
+            => await _handler
+            .Run(async () => await _driverService.CreateAsync(command.UserId))
+            .Next()
+            .Run(async () =>  
+            {
+                    var vehicle = command.Vehicle;
+                    await _driverService.SetVehicle(command.UserId, vehicle.Brand, vehicle.Name);
+            })
+            .ExecuteAsync();
     }
 }
