@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
 using Passenger.Infrastructure.Commands;
 using Passenger.Infrastructure.Commands.Drivers;
 using Passenger.Infrastructure.Services;
@@ -10,6 +11,7 @@ namespace Passenger.Api.Controllers
 {
     public class DriverController : ApiControllerBase
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly IDriverService _driverService;
         public DriverController(ICommandDispatcher commandDispatcher, IDriverService driverService) : base(commandDispatcher)
         {

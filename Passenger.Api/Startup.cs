@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using NLog.Extensions.Logging;
+using NLog.Web;
 using Passenger.Api.Framework;
 using Passenger.Core.Repositories;
 using Passenger.Infrastructure.IoC;
@@ -45,6 +47,7 @@ namespace Passenger.Api
                              {
                                  options.SerializerSettings.Formatting = Formatting.Indented;
                              });
+                             
 
             var builder = new ContainerBuilder();
             builder.Populate(services);
