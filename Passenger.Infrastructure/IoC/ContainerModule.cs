@@ -17,8 +17,9 @@ namespace Passenger.Infrastructure.IoC
             builder.RegisterInstance(AutoMapperConfig.Initialize())
                    .SingleInstance();
             builder.RegisterModule<CommandModule>();
-            builder.RegisterModule<ServiceModule>();
             builder.RegisterModule<RepositoryModule>();
+            builder.RegisterModule<MongoModule>();
+            builder.RegisterModule<ServiceModule>();
             builder.RegisterModule( new SettingsModule(_configuration));
         }
     }
