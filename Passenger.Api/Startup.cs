@@ -73,6 +73,8 @@ namespace Passenger.Api
                     };
 
                 });
+            
+            services.AddEntityFrameworkSqlServer().AddEntityFrameworkInMemoryDatabase().AddDbContext<PassengerContext>();
 
             return new AutofacServiceProvider(ApplicationContainer);
         }
