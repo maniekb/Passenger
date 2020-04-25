@@ -20,6 +20,7 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using Passenger.Api.Framework;
 using Passenger.Core.Repositories;
+using Passenger.Infrastructure.EF;
 using Passenger.Infrastructure.IoC;
 using Passenger.Infrastructure.IoC.Modules;
 using Passenger.Infrastructure.Mappers;
